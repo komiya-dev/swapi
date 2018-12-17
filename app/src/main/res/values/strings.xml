@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">swapi</string>
+    <string name="bottom_navigation_view_behavior">"com.yurentsy.swapi.gui.BottonNavigationViewHideOnScrollBehavior"</string>
+
+    <!--home fragment-->
+    <string name="home_btn_title_films">Films</string>
+    <string name="home_btn_title_people">People</string>
+
+    <!--film item-->
+    <string name="film_title">Title:</string>
+    <string name="film_episode_id">Episode Id:</string>
+    <string name="film_opening_crawl">Opening Crawl:</string>
+    <string name="film_director">Director:</string>
+    <string name="film_producer">Producer:</string>
+    <string name="film_release_data">Release Data:</string>
+    <string name="fragment_films_toolbar_title">Films</string>
+    <string name="navigation_title_home">home</string>
+    <string name="navigation_title_bookmarks">Bookmarks</string>
+    <string name="menu_toolbar_title_search">search</string>
+</resources>
