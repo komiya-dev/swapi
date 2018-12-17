@@ -2,7 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/logo_width"
+        android:layout_height="@dimen/logo_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/logo_margin_top"
+        android:layout_weight="0.25"
+        android:src="@mipmap/logo" />
 
     <Button
         android:id="@+id/btnFilm"
@@ -23,4 +34,13 @@
         android:background="@color/home_button_background"
         android:text="@string/home_btn_title_people"
         android:textColor="@color/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/imgGithub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/github_margin_top"
+        android:layout_weight="0.25"
+        android:src="@mipmap/github" />
 </LinearLayout>
