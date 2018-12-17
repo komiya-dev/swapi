@@ -15,15 +15,11 @@ data class Film(
     val director: String,
     val producer: String,
     val releaseDate: String,
-    override val url: String,
     @Expose var isFavorite: Boolean
-) : IListData {
+) : ListData {
 
     @Ignore
     var isExpanded: Boolean = false
-
-    override val name: String
-        get() = title
 
     override val displayData: Map<String, String>?
         get() = mapOf(

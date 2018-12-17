@@ -1,13 +1,13 @@
 package com.yurentsy.swapi.mvp.presenter
 
-import com.yurentsy.swapi.mvp.model.entity.Film
+import com.yurentsy.swapi.mvp.model.entity.People
 import com.yurentsy.swapi.mvp.model.repo.Repo
 import com.yurentsy.swapi.mvp.view.IListView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class FilmPresenter(val view: IListView<Film>, val repo: Repo) : ListPresenter<Film> {
-    lateinit var data: MutableList<Film>
+class PeoplePresenter(val view: IListView<People>, val repo: Repo) : ListPresenter<People> {
+    lateinit var data: MutableList<People>
 
     override fun getDataIsFavorite() {
         view.showData(data.filter { d -> d.isFavorite }
@@ -15,23 +15,24 @@ class FilmPresenter(val view: IListView<Film>, val repo: Repo) : ListPresenter<F
     }
 
     override fun getDataByTitleSearch(search: String) {
-        view.showData(data.filter { d ->
-            d.title.toLowerCase()
-                .contains(search.toLowerCase())
-        }.toMutableList())
+        load(search)
+//        view.showData(data.filter { d ->
+//            d.name.toLowerCase()
+//                .contains(search.toLowerCase())
+//        }.toMutableList())
     }
 
-    override fun updateFlagIsFavorite(list: MutableList<Film>, position: Int, b: Boolean) {
+    override fun updateFlagIsFavorite(list: MutableList<People>, position: Int, b: Boolean) {
         data[position].isFavorite = b
-        data.find { d -> d.episodeId == list[position].episodeId }
-            ?.let { f ->
-                f.isFavorite = b
-                repo.setFilm(f)
+        data.find { d -> d.name == list[position].name }
+            ?.let { p ->
+                p.isFavorite = b
+                repo.setPerson(p)
             }
     }
 
     override fun load(search: String?) {
-        repo.getFilmsBySearch(search)
+        repo.getPeopleBySearch(search)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext {
@@ -48,7 +49,7 @@ class FilmPresenter(val view: IListView<Film>, val repo: Repo) : ListPresenter<F
     }
 
     override fun loadFromCache(search: String?) {
-        repo.getFilmsBySearchFromCache(search)
+        repo.getPeopleBySearchFromCache(search)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext {
@@ -63,7 +64,7 @@ class FilmPresenter(val view: IListView<Film>, val repo: Repo) : ListPresenter<F
             })
     }
 
-    override fun saveDataWasChanged(data: MutableList<Film>) {
-        repo.setFilmsHasWasChanged(data)
+    override fun saveDataWasChanged(data: MutableList<People>) {
+        repo.setPeopleHasWasChanged(data)
     }
 }

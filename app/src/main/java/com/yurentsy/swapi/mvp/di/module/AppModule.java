@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import com.yurentsy.swapi.App;
 import com.yurentsy.swapi.gui.fragment.FilmFragment;
 import com.yurentsy.swapi.gui.fragment.HomeFragment;
+import com.yurentsy.swapi.gui.fragment.PeopleFragment;
 
 import javax.inject.Singleton;
 
@@ -40,5 +41,10 @@ public class AppModule {
     @Provides
     FilmFragment provideFilmFragment() {
         return FilmFragment.newInstance();
+    }
+
+    @Provides
+    PeopleFragment providePeopleFragment() {
+        return PeopleFragment.newInstance();
     }
 }

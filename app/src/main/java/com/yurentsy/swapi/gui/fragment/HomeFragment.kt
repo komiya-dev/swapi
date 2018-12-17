@@ -16,6 +16,8 @@ class HomeFragment : Fragment() {
 
     @Inject
     lateinit var filmFragment: FilmFragment
+    @Inject
+    lateinit var peopleFragment: PeopleFragment
 
     companion object {
         @JvmStatic
@@ -36,7 +38,7 @@ class HomeFragment : Fragment() {
 
         val frame = SharedPrefsUtils.getStringPreference(context!!, Constants.PARAM_FRAME)
         when (frame) {
-            Constants.KEY_LIST -> {
+            Constants.KEY_PEOPLE -> {
                 btnPeopleOnCLick(view)
             }
             Constants.KEY_FILM -> {
@@ -54,12 +56,17 @@ class HomeFragment : Fragment() {
 
     private fun btnFilmOnClick(view: View?) {
         fragmentManager?.beginTransaction()
-            ?.addToBackStack("PeopleListFragment")
+            ?.addToBackStack("FilmListFragment")
             ?.replace(R.id.container, filmFragment)
             ?.commit()
         SharedPrefsUtils.setStringPreference(context!!, Constants.PARAM_FRAME, Constants.KEY_FILM)
     }
 
     private fun btnPeopleOnCLick(view: View?) {
+        fragmentManager?.beginTransaction()
+            ?.addToBackStack("PeopleListFragment")
+            ?.replace(R.id.container, peopleFragment)
+            ?.commit()
+        SharedPrefsUtils.setStringPreference(context!!, Constants.PARAM_FRAME, Constants.KEY_PEOPLE)
     }
 }

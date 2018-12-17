@@ -14,44 +14,43 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
 import com.yurentsy.swapi.App
-import com.yurentsy.swapi.BuildConfig
 import com.yurentsy.swapi.R
 import com.yurentsy.swapi.gui.Listener
-import com.yurentsy.swapi.gui.adapter.film.FilmAdapter
-import com.yurentsy.swapi.mvp.model.entity.Film
+import com.yurentsy.swapi.gui.adapter.people.PeopleAdapter
+import com.yurentsy.swapi.mvp.model.entity.People
 import com.yurentsy.swapi.mvp.model.repo.Repo
-import com.yurentsy.swapi.mvp.presenter.FilmPresenter
+import com.yurentsy.swapi.mvp.presenter.PeoplePresenter
 import com.yurentsy.swapi.mvp.view.IListView
 import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
 
-class FilmFragment : Fragment(),
+class PeopleFragment : Fragment(),
     Listener,
-    IListView<Film>,
+    IListView<People>,
     SwipeRefreshLayout.OnRefreshListener,
     BottomNavigationView.OnNavigationItemSelectedListener {
 
     companion object {
         @JvmStatic
-        fun newInstance() = FilmFragment()
+        fun newInstance() = PeopleFragment()
 
         private const val NAVIGATION_HOME = "navigation_home"
         private const val NAVIGATION_BOOKMARKS = "navigation_bookmarks"
     }
 
     @Inject
-    lateinit var listAdapter: FilmAdapter
+    lateinit var listAdapter: PeopleAdapter
 
     @Inject
     lateinit var repo: Repo
 
-    private val presenter by lazy { FilmPresenter(this, repo) }
+    private val presenter by lazy { PeoplePresenter(this, repo) }
     private var recyclerViewState: Parcelable? = null
     private var activeNav = NAVIGATION_HOME
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        App.getInstance().initFilmComponent(this).inject(this)
+        App.getInstance().initPeopleComponent(this).inject(this)
 
         presenter.load()
     }
@@ -73,7 +72,7 @@ class FilmFragment : Fragment(),
         swipe.setOnRefreshListener(this)
         bottom_navigation.setOnNavigationItemSelectedListener(this)
 
-        toolbar.setTitle(R.string.fragment_films_toolbar_title)
+        toolbar.setTitle(R.string.fragment_people_toolbar_title)
         toolbar.inflateMenu(R.menu.menu_toolbar)
 
         val searchViewItem = toolbar.menu.findItem(R.id.action_search)
@@ -119,9 +118,6 @@ class FilmFragment : Fragment(),
         val expanded = model.isExpanded
         model.isExpanded = !expanded
         listAdapter.notifyItemChanged(position)
-
-        if (BuildConfig.DEBUG)
-            showToast("${model.title} ${if (model.isFavorite) "" else "UN"}FAVORITE")
     }
 
     override fun onViewChickenBoxClick(position: Int, b: Boolean) {
@@ -158,7 +154,7 @@ class FilmFragment : Fragment(),
         progress.visibility = ProgressBar.INVISIBLE
     }
 
-    override fun showData(data: MutableList<Film>) {
+    override fun showData(data: MutableList<People>) {
         listAdapter.result = data
         hideSwipe()
     }

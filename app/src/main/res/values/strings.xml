@@ -6,15 +6,27 @@
     <string name="home_btn_title_films">Films</string>
     <string name="home_btn_title_people">People</string>
 
+    <!--all fragments-->
+    <string name="navigation_title_home">home</string>
+    <string name="navigation_title_bookmarks">Bookmarks</string>
+    <string name="menu_toolbar_title_search">search</string>
+
     <!--film item-->
+    <string name="fragment_films_toolbar_title">Films</string>
     <string name="film_title">Title:</string>
     <string name="film_episode_id">Episode Id:</string>
     <string name="film_opening_crawl">Opening Crawl:</string>
     <string name="film_director">Director:</string>
     <string name="film_producer">Producer:</string>
     <string name="film_release_data">Release Data:</string>
-    <string name="fragment_films_toolbar_title">Films</string>
-    <string name="navigation_title_home">home</string>
-    <string name="navigation_title_bookmarks">Bookmarks</string>
-    <string name="menu_toolbar_title_search">search</string>
+
+    <!--people item-->
+    <string name="fragment_people_toolbar_title">People</string>
+    <string name="people_name">Name:</string>
+    <string name="people_birth_year">Birth year:</string>
+    <string name="people_eye_color">Eye color:</string>
+    <string name="people_gender">Gender:</string>
+    <string name="people_height">Height:</string>
+    <string name="people_mass">Mass:</string>
+    <string name="people_skin_color">Skin color:</string>
 </resources>

@@ -1,11 +1,11 @@
 package com.yurentsy.swapi.mvp.view
 
-import com.yurentsy.swapi.mvp.model.entity.Film
+import com.yurentsy.swapi.mvp.model.entity.ListData
 
-interface ListView {
+interface IListView<T : ListData> {
     fun showProgressBar()
     fun hideProgressBar()
-    fun showData(data: MutableList<Film>)
+    fun showData(data: MutableList<T>)
     fun showToast(text: String)
     fun hideSwipe()
 }

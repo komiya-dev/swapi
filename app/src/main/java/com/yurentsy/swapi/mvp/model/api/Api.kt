@@ -1,6 +1,7 @@
 package com.yurentsy.swapi.mvp.model.api
 
 import com.yurentsy.swapi.mvp.model.entity.Film
+import com.yurentsy.swapi.mvp.model.entity.People
 import com.yurentsy.swapi.mvp.model.entity.Result
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -19,4 +20,11 @@ interface Api {
 
     @GET("films/")
     fun searchFilms(@Query("search") search: String? = null): Observable<Result<Film>>
+
+
+    @GET("people/") //[1..9]
+    fun people(@Query("page") page: Int? = null): Observable<Result<People>>
+
+    @GET("people/")
+    fun searchPeople(@Query("search") search: String? = null): Observable<Result<People>>
 }
