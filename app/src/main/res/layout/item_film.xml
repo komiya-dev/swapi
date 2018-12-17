@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginBottom="16dp"
+    android:layout_marginStart="@dimen/item_marginLeft"
+    android:layout_marginEnd="@dimen/item_marginRight"
+    android:layout_marginBottom="@dimen/item_marginBottom"
     android:background="@color/colorWhite"
     android:gravity="center_vertical">
 
@@ -29,7 +29,7 @@
                 android:textStyle="bold" />
 
             <Space
-                android:layout_width="8dp"
+                android:layout_width="@dimen/item_space"
                 android:layout_height="wrap_content" />
 
             <TextView
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="20sp"
+                android:textSize="@dimen/text_size_title"
                 tools:text="Russia" />
         </LinearLayout>
 
@@ -53,7 +53,7 @@
                 android:textStyle="bold" />
 
             <Space
-                android:layout_width="8dp"
+                android:layout_width="@dimen/item_space"
                 android:layout_height="wrap_content" />
 
             <TextView
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_text"
                 tools:text="Moscow" />
         </LinearLayout>
 
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_text"
                 tools:text="Russia" />
         </LinearLayout>
 
@@ -97,7 +97,7 @@
                 android:textStyle="bold" />
 
             <Space
-                android:layout_width="8dp"
+                android:layout_width="@dimen/item_space"
                 android:layout_height="wrap_content" />
 
             <TextView
@@ -105,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_text"
                 tools:text="Russia" />
         </LinearLayout>
 
@@ -121,7 +121,7 @@
                 android:textStyle="bold" />
 
             <Space
-                android:layout_width="8dp"
+                android:layout_width="@dimen/item_space"
                 android:layout_height="wrap_content" />
 
             <TextView
@@ -129,7 +129,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_text"
                 tools:text="Russia" />
         </LinearLayout>
 
@@ -145,7 +145,7 @@
                 android:textStyle="bold" />
 
             <Space
-                android:layout_width="8dp"
+                android:layout_width="@dimen/item_space"
                 android:layout_height="wrap_content" />
 
             <TextView
@@ -153,7 +153,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_text"
                 tools:text="Russia" />
         </LinearLayout>
     </LinearLayout>
