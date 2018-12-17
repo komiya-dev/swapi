@@ -33,3 +33,6 @@
 - Поиск (people/?search=le)
 
 ![screen4](https://pp.userapi.com/c851232/v851232170/709e3/A6zTbqxX2Vk.jpg)
+
+ресурсы были взяты 
+[тут](https://github.com/paulopacitti/androidSWAPI)
