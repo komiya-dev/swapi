@@ -32,4 +32,4 @@
 
 - Поиск (people/?search=le)
 
-![screen4](https://pp.userapi.com/c847019/v847019560/155ed9/-nvCoi3wQmY.jpg)
+![screen4](https://pp.userapi.com/c851232/v851232170/709e3/A6zTbqxX2Vk.jpg)
