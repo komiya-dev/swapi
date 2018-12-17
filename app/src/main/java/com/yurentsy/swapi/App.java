@@ -4,14 +4,11 @@ import android.app.Application;
 
 import com.facebook.stetho.Stetho;
 import com.yurentsy.swapi.gui.fragment.FilmFragment;
-import com.yurentsy.swapi.gui.fragment.ListFragment;
 import com.yurentsy.swapi.mvp.di.component.AppComponent;
 import com.yurentsy.swapi.mvp.di.component.DaggerAppComponent;
 import com.yurentsy.swapi.mvp.di.component.FilmComponent;
-import com.yurentsy.swapi.mvp.di.component.ModelComponent;
 import com.yurentsy.swapi.mvp.di.module.AppModule;
 import com.yurentsy.swapi.mvp.di.module.FilmModule;
-import com.yurentsy.swapi.mvp.di.module.ModelModule;
 
 public class App extends Application {
 
@@ -34,10 +31,6 @@ public class App extends Application {
 
     public AppComponent getAppComponent() {
         return appComponent;
-    }
-
-    public ModelComponent initModelComponent(ListFragment fragment) {
-        return appComponent.plus(new ModelModule(fragment));
     }
 
     public FilmComponent initFilmComponent(FilmFragment fragment) {

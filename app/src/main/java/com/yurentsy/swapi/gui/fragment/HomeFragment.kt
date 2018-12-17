@@ -15,9 +15,6 @@ import javax.inject.Inject
 class HomeFragment : Fragment() {
 
     @Inject
-    lateinit var listFragment: ListFragment
-
-    @Inject
     lateinit var filmFragment: FilmFragment
 
     companion object {
@@ -64,10 +61,5 @@ class HomeFragment : Fragment() {
     }
 
     private fun btnPeopleOnCLick(view: View?) {
-        fragmentManager?.beginTransaction()
-            ?.addToBackStack("FilmListFragment")
-            ?.replace(R.id.container, listFragment)
-            ?.commit()
-        SharedPrefsUtils.setStringPreference(context!!, Constants.PARAM_FRAME, Constants.KEY_LIST)
     }
 }
