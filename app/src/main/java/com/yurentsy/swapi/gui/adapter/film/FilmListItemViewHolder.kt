@@ -23,15 +23,16 @@ class FilmListItemViewHolder(
     fun bind(film: Film) {
         view.title.text = film.title
         view.episode_id.text = film.episodeId.toString()
-        view.opening_crawl.text = film.openingCrawl
         view.director.text = film.director
         view.producer.text = film.producer
         view.release_date.text = film.releaseDate
 
+        val expanded = film.isExpanded
+        (view.film_sub_item as View).visibility = if (expanded) View.VISIBLE else View.GONE
+        view.opening_crawl.text = film.openingCrawl
+
         view.is_favorite.isChecked = film.isFavorite
-        view.is_favorite.setOnCheckedChangeListener(this) /*{ _, b ->
-            film.isFavorite = b
-        }*/
+        view.is_favorite.setOnCheckedChangeListener(this)
     }
 
     override fun onClick(v: View?) {

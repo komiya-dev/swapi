@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
 import com.yurentsy.swapi.App
+import com.yurentsy.swapi.BuildConfig
 import com.yurentsy.swapi.R
 import com.yurentsy.swapi.gui.Listener
 import com.yurentsy.swapi.gui.adapter.film.FilmAdapter
@@ -65,8 +66,10 @@ class FilmFragment : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        (recycler.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = listAdapter
+        recycler.setHasFixedSize(true)
         swipe.setOnRefreshListener(this)
         bottom_navigation.setOnNavigationItemSelectedListener(this)
 
@@ -113,11 +116,12 @@ class FilmFragment : Fragment(),
 
     override fun onViewHolderClick(position: Int) {
         val model = listAdapter.result[position]
-        Toast.makeText(
-            context,
-            "${model.title} ${if (model.isFavorite) "" else "UN"}FAVORITE",
-            Toast.LENGTH_SHORT
-        ).show()
+        val expanded = model.isExpanded
+        model.isExpanded = !expanded
+        listAdapter.notifyItemChanged(position)
+
+        if (BuildConfig.DEBUG)
+            showToast("${model.title} ${if (model.isFavorite) "" else "UN"}FAVORITE")
     }
 
     override fun onViewChickenBoxClick(position: Int, b: Boolean) {

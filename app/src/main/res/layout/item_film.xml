@@ -3,17 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/item_marginLeft"
-    android:layout_marginEnd="@dimen/item_marginRight"
-    android:layout_marginBottom="@dimen/item_marginBottom"
-    android:background="@color/colorWhite"
-    android:gravity="center_vertical">
+    android:layout_alignStart="@dimen/item_margin_left"
+    android:layout_alignEnd="@dimen/item_margin_right"
+    android:background="@color/colorWhite">
+
+    <CheckBox
+        android:id="@+id/is_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/item_margin_top"
+        android:layout_marginEnd="@dimen/item_margin_right"
+        android:button="@drawable/ic_favorite" />
 
     <LinearLayout
         android:id="@+id/film_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/item_margin_left"
+        android:layout_marginTop="@dimen/item_margin_bottom"
         android:layout_toStartOf="@id/is_favorite"
         android:orientation="vertical">
 
@@ -63,26 +73,6 @@
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/text_size_text"
                 tools:text="Moscow" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/film_opening_crawl"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/opening_crawl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/text_size_text"
-                tools:text="Russia" />
         </LinearLayout>
 
         <LinearLayout
@@ -156,13 +146,26 @@
                 android:textSize="@dimen/text_size_text"
                 tools:text="Russia" />
         </LinearLayout>
-    </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/is_favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:button="@drawable/ic_favorite" />
+        <LinearLayout
+            android:id="@+id/film_sub_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/film_opening_crawl"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/opening_crawl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_text"
+                tools:text="Russia" />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
