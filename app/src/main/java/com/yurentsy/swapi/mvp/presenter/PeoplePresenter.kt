@@ -9,26 +9,21 @@ import io.reactivex.schedulers.Schedulers
 class PeoplePresenter(val view: IListView<People>, val repo: Repo) : ListPresenter<People> {
     lateinit var data: MutableList<People>
 
-    override fun getDataIsFavorite() {
-        view.showData(data.filter { d -> d.isFavorite }
-            .toMutableList())
+    override fun getDataIsFavorite(search: String?) {
+        loadWithFilter(search) { d -> d.isFavorite }
     }
 
     override fun getDataByTitleSearch(search: String) {
         load(search)
-//        view.showData(data.filter { d ->
-//            d.name.toLowerCase()
-//                .contains(search.toLowerCase())
-//        }.toMutableList())
     }
 
     override fun updateFlagIsFavorite(list: MutableList<People>, position: Int, b: Boolean) {
-        data[position].isFavorite = b
-        data.find { d -> d.name == list[position].name }
-            ?.let { p ->
-                p.isFavorite = b
-                repo.setPerson(p)
-            }
+        updateFlag(list[position], b)
+    }
+
+    private fun updateFlag(person: People, b: Boolean) {
+        person.isFavorite = b
+        repo.setPerson(person)
     }
 
     override fun load(search: String?) {
@@ -41,6 +36,22 @@ class PeoplePresenter(val view: IListView<People>, val repo: Repo) : ListPresent
             .subscribe({ res ->
                 data = res.results
                 view.showData(res.results)
+                view.hideProgressBar()
+                view.hideSwipe()
+            }, {
+                view.showToast("Error load")
+            })
+    }
+
+    fun loadWithFilter(search: String?, filter: (People) -> Boolean) {
+        repo.getPeopleBySearchFromCache(search)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnNext {
+                view.showProgressBar()
+            }
+            .subscribe({ res ->
+                view.showData(res.results.filter(filter).toMutableList())
                 view.hideProgressBar()
                 view.hideSwipe()
             }, {

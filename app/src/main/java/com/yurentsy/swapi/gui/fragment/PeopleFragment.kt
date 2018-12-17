@@ -90,7 +90,10 @@ class PeopleFragment : Fragment(),
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                presenter.getDataByTitleSearch(query)
+                when (activeNav) {
+                    NAVIGATION_HOME -> presenter.getDataByTitleSearch(query)
+                    NAVIGATION_BOOKMARKS -> presenter.getDataIsFavorite(query)
+                }
                 return false
             }
         })

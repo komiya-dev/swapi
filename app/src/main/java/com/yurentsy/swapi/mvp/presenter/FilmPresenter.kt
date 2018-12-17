@@ -9,8 +9,13 @@ import io.reactivex.schedulers.Schedulers
 class FilmPresenter(val view: IListView<Film>, val repo: Repo) : ListPresenter<Film> {
     lateinit var data: MutableList<Film>
 
-    override fun getDataIsFavorite() {
-        view.showData(data.filter { d -> d.isFavorite }
+    override fun getDataIsFavorite(search: String?) {
+        var tempData = data
+        search?.let {
+            tempData = tempData.filter { d -> d.title.toLowerCase().contains(search.toLowerCase()) }
+                .toMutableList()
+        }
+        view.showData(tempData.filter { d -> d.isFavorite }
             .toMutableList())
     }
 
